@@ -29,6 +29,8 @@ module Pusher
       }
       merged_options = default_options.merge(options)
 
+      #puts "[pusher/options]: " + options.to_s
+
       if options.has_key?(:host)
         merged_options[:host] = options[:host]
       elsif options.has_key?(:cluster)
@@ -115,7 +117,9 @@ module Pusher
     def encrypted=(boolean)
       @scheme = boolean ? 'https' : 'http'
       # Configure port if it hasn't already been configured
-      @port = boolean ? 443 : 80
+      if @port == nil
+        @port = boolean ? 443 : 80
+      end
     end
 
     def encrypted?
