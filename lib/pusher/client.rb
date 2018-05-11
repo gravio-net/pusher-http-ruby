@@ -117,7 +117,7 @@ module Pusher
     def encrypted=(boolean)
       @scheme = boolean ? 'https' : 'http'
       # Configure port if it hasn't already been configured
-      if @port == nil
+      if @port == nil || @port == 80
         @port = boolean ? 443 : 80
       end
     end
@@ -127,7 +127,9 @@ module Pusher
     end
 
     def cluster=(cluster)
-      @host = "api-#{cluster}.pusher.com"
+      if cluster != nil
+        @host = "api-#{cluster}.pusher.com"
+      end
     end
 
     # Convenience method to set all timeouts to the same value (in seconds).
