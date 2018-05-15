@@ -73,7 +73,7 @@ module Pusher
         return df
       else
         http = @client.sync_http_client
-        puts "[pusher]: " + @ver.to_s + " " + @uri.to_s + " " + @params.to_s + " " + @body.to_s + " " + @head.to_s
+        # puts "[pusher]: " + @ver.to_s + " " + @uri.to_s + " " + @params.to_s + " " + @body.to_s + " " + @head.to_s
         return http.request_async(@verb, @uri, @params, @body, @head)
       end
     end

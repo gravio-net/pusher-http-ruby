@@ -117,9 +117,11 @@ module Pusher
     def encrypted=(boolean)
       @scheme = boolean ? 'https' : 'http'
       # Configure port if it hasn't already been configured
-      if @port == nil || @port == 80
+      if @port == nil || @port == 80 || @port == 443
         @port = boolean ? 443 : 80
       end
+
+      #puts "[pusher]: port = " + @port.to_s
     end
 
     def encrypted?
